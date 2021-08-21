@@ -3,7 +3,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URL;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
 
 public class Main {
 
@@ -11,6 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         //First method
+        /*
         BufferedReader reader;
         String line;
         StringBuffer responseContent = new StringBuffer();
@@ -48,5 +52,12 @@ public class Main {
         } finally {
             connection.disconnect();
         }
+         */
+
+        //Second method java.net.HttpClient
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create("https://jsonplaceholder.typicode.com/albums")).build();
+
+
     }
 }
