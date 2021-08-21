@@ -1,3 +1,6 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -63,5 +66,17 @@ public class Main {
                 .thenAccept(System.out::println)
                 .join();
 
+    }
+
+    public static String parse (String responseBody){
+        JSONArray albums = new JSONArray(responseBody);
+        for (int i = 0; i < albums.length(); i++){
+            JSONObject album = albums.getJSONObject(i);
+            int id = album.getInt("id");
+            int userId = album.getInt("userId");
+            String title = album.getString("title");
+            System.out.println(id + " " + title + " " + userId);
+        }
+        return null;
     }
 }
